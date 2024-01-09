@@ -4,16 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do App</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>To-Do App</h1>
-        <input type="text" id="taskInput" placeholder="Add a new task">
+        <h1 class="container-title">To-Do App</h1>
+        <input type="text" id="taskInput" placeholder="Add new task 👇">
         <button onclick="addTask()">Add Task</button>
-        <ul id="taskList"></ul>
+        <p id="taskList"></p>
     </div>
 
-    <script src="index.js"></script>
+   
+    <script>
+        
+function addTask() {
+    var taskInput = document.getElementById("taskInput");
+    var taskList = document.getElementById("taskList");
+
+    if (taskInput.value.trim() === "") {
+        alert("Please enter a task🩵");
+        return;
+    }
+
+    
+    var li = document.createElement("li");
+    li.textContent = taskInput.value;
+
+    
+    var deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.onclick = function() {
+        taskList.remove(li);
+    };
+
+    
+    li.append(deleteButton);
+
+    
+    taskList.append(li);
+
+    
+    taskInput.value = "";
+}
+    </script>
 </body>
 </html>
